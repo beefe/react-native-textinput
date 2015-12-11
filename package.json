@@ -1,0 +1,41 @@
+{
+  "name": "react-native-textinput",
+  "version": "0.0.1",
+  "description": "TextInput react-native for IOS/Android",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react-native TextInput IOS/Android"
+  ],
+  "author": {
+    "name": "zhuchunyan"
+  },
+  "license": "ISC",
+  "engines": {
+    "node": ">=4"
+  },
+  "_id": "react-native-textinput@0.0.3",
+  "_shasum": "3066bc9a45465f182c77ea5a05ee51a8f272748d",
+  "_from": "react-native-textinput@0.0.3",
+  "_npmVersion": "2.14.7",
+  "_nodeVersion": "4.2.2",
+  "_npmUser": {
+    "name": "zhuchunyan",
+    "email": "215098516@qq.com"
+  },
+  "dist": {
+    "shasum": "3066bc9a45465f182c77ea5a05ee51a8f272748d",
+    "tarball": "http://registry.npmjs.org/react-native-textinput/-/react-native-textinput-0.0.3.tgz"
+  },
+  "maintainers": [
+    {
+      "name": "zhuchunyan",
+      "email": "215098516@qq.com"
+    }
+  ],
+  "directories": {},
+  "_resolved": "https://registry.npmjs.org/react-native-textinput/-/react-native-textinput-0.0.3.tgz"
+}
