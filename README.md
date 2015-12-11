@@ -2,7 +2,8 @@
 ##Platform
 ios、android
 ##example
-<prev><code><Input
+```
+<Input
 	labelText={'邀请码'}
 	autoFocus={true}
 	keyboardType={'numeric'}
@@ -11,4 +12,5 @@ ios、android
 	onChangeText={(text) => this.setState({invitationCode: text})}
 	_onDelTextHandle={() => this.setState({invitationCode: ''})}
 	value={this.state.invitationCode}
-/></code></prev>
+/>
+```
