@@ -32,7 +32,7 @@ var Input = React.createClass({
 			maxLength: null,
 			placeholderTextColor: '#c3c3c3',
 			editable: true,
-			clearButtonMode: 'while-editing'
+			clearButtonMode: ''
 		};
 	},
 
@@ -45,32 +45,27 @@ var Input = React.createClass({
 	render() {
 		if(Platform.OS === 'ios'){
 			return (
-				<View style={styles.inputBox}>
-					<Text style={styles.inputLabel}>{this.props.labelText}</Text>
-					<TextInput 
-						style={[styles.inputText,this.props.style]}
-						autoFocus={this.props.autoFocus}
-						autoCorrect={this.props.autoCorrect}
-						keyboardType={this.props.keyboardType}
-						maxLength = {this.props.maxLength}
-						onChangeText = {(text) => this.props.onChangeText(text)}
-						value={this.props.value}
-						placeholder={this.props.placeholder}
-						placeholderTextColor={this.props.placeholderTextColor}
-						editable={this.props.editable}
-						//ios only
-						clearButtonMode={this.props.clearButtonMode}
-					/>
-				</View>
+				<TextInput 
+					style={[styles.inputText,this.props.style]}
+					autoFocus={this.props.autoFocus}
+					autoCorrect={this.props.autoCorrect}
+					keyboardType={this.props.keyboardType}
+					maxLength = {this.props.maxLength}
+					onChangeText = {(text) => this.props.onChangeText(text)}
+					value={this.props.value}
+					placeholder={this.props.placeholder}
+					placeholderTextColor={this.props.placeholderTextColor}
+					editable={this.props.editable}
+					//ios only
+					clearButtonMode={this.props.clearButtonMode}
+				/>
 			);
 		}
 		else{
 			return (
-				<View style={styles.inputBox}>
-					<Text style={styles.inputLabel}>{this.props.labelText}</Text>
-
+				<View style={[styles.inputWrap,this.props.style]}>
 					<TextInput 
-						style={[styles.inputText,this.props.style]}
+						style={{flex: 1}}
 						autoFocus={this.props.autoFocus}
 						autoCorrect={this.props.autoCorrect}
 						keyboardType={this.props.keyboardType}
@@ -81,9 +76,8 @@ var Input = React.createClass({
 						editable={this.props.editable}
 						underlineColorAndroid={'#fff'}
 					/>
-
-					<TouchableOpacity style={this.props.value ? styles.inputDel : ''} onPress={this.props._onDelTextHandle}>
-						<Image style={this.props.value ? styles.inputDelImg : styles.inputDelImgNone} resizeMode={'stretch'} source={require('./img/btn_delete.png')} />
+					<TouchableOpacity style={this.props.clearButtonMode && this.props.value ? styles.inputDel : ''} onPress={this.props._onDelTextHandle}>
+						<Image style={this.props.clearButtonMode && this.props.value ? styles.inputDelImg : styles.inputDelImgNone} resizeMode={'stretch'} source={require('./img/icon_delete.png')} />
 					</TouchableOpacity>
 				</View>
 			);
@@ -92,47 +86,28 @@ var Input = React.createClass({
 
 });
 
-/*
-*平台兼容性
-*name                    ios         andriod
-*clearButtonMode		  1              0
-*maxLength                1              0
-*
-*underlineColorAndroid    0              1
-
-*/
 var styles = StyleSheet.create({
-	inputBox: {
+	inputWrap: {
 		flexDirection: 'row',
 		backgroundColor: '#fff',
 		height: 43,
-		width: Dimensions.get('window').width,
 		justifyContent: 'center',
 		alignItems: 'center',
 		paddingRight: 25,
 		paddingLeft: 15,
 
 	},
-	inputLabel: {
-		flex: 1,
-		color: '#222',
-		fontSize: 15,
-		textAlign: 'left',
-		
-	},
 	inputText: {
-		flex: 3,
 		color: '#222',
 		fontSize: 14,
 	},
 	inputDel: {
 		position: 'absolute',
-		right: 15,
+		right: 0,
 		top: 10,
 		width: 16,
 		height: 16,
-		borderRadius: 16, 
-		backgroundColor: '#aaa',
+		borderRadius: 16,
 		justifyContent: 'center',
 		alignItems: 'center',
 	},
@@ -143,7 +118,8 @@ var styles = StyleSheet.create({
 	},
 	inputDelImg: {
 		width: 16,
-		height: 16
+		height: 16,
+		opacity: 0.2
 	},
 	inputDelImgNone: {
 		width: 0,

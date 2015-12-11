@@ -4,7 +4,6 @@ ios、android
 ##example
 ```
 <Input
-	labelText={'邀请码'}
 	autoFocus={true}
 	keyboardType={'numeric'}
 	maxLength={4}
