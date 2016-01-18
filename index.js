@@ -39,6 +39,7 @@ var Input = React.createClass({
 	getInitialState() {
 		return {
 			iptVal: '',
+			isediting: false
 		};
 	},
 
@@ -65,20 +66,35 @@ var Input = React.createClass({
 			return (
 				<View style={[styles.inputWrap,this.props.style]}>
 					<TextInput 
-						style={{flex: 1}}
+						style={{flex: 1,marginLeft: 0,paddingLeft: 0}}
 						autoFocus={this.props.autoFocus}
 						autoCorrect={this.props.autoCorrect}
 						keyboardType={this.props.keyboardType}
-						onChangeText={(text) => this.props.onChangeText(text)}
+						onChangeText={(text) => {
+							this.props.onChangeText(text);
+						}}
+						onFocus={() => {
+							this.setState({
+								isediting: true
+							});
+						}}
+						onBlur={() => {
+							this.setState({
+								isediting: false
+							});
+						}}
 						value={this.props.value}
 						placeholder={this.props.placeholder}
 						placeholderTextColor={this.props.placeholderTextColor}
 						editable={this.props.editable}
 						underlineColorAndroid={'#fff'}
 					/>
+					{this.state.isediting ?
 					<TouchableOpacity style={this.props.clearButtonMode && this.props.value ? styles.inputDel : ''} onPress={this.props._onDelTextHandle}>
 						<Image style={this.props.clearButtonMode && this.props.value ? styles.inputDelImg : styles.inputDelImgNone} resizeMode={'stretch'} source={require('./img/icon_delete.png')} />
-					</TouchableOpacity>
+					</TouchableOpacity> :
+					<View></View>
+					}
 				</View>
 			);
 		}
@@ -93,9 +109,6 @@ var styles = StyleSheet.create({
 		height: 43,
 		justifyContent: 'center',
 		alignItems: 'center',
-		paddingRight: 25,
-		paddingLeft: 15,
-
 	},
 	inputText: {
 		color: '#222',

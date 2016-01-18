@@ -1,6 +1,6 @@
 {
   "name": "react-native-textinput",
-  "version": "0.0.4",
+  "version": "0.0.8",
   "description": "TextInput react-native for IOS/Android",
   "main": "index.js",
   "devDependencies": {},
